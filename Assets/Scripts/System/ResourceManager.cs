@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ public class ResourceManager : MonoBehaviour {
     public static ResourceManager Instance;
 
     public Image[] UpgradeIcons;
+    public TextAsset UpgradeData;
+
 
     private void Start()
     {

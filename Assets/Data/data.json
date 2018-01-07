@@ -1,0 +1,47 @@
+[
+	{
+		"Title": "Шахтёр",
+		"Price": "150",
+		"Level": "0",
+		"Speed": "0.1"
+	},
+	{
+		"Title": "Шахтёр-азиат",
+		"Price": "1000",
+		"Level": "0",
+		"Speed": "1"
+	},
+	{
+		"Title": "GTX-550",
+		"Price": "5000",
+		"Level": "0",
+		"Speed": "6"
+	},
+	{
+		"Title": "GTX-1080",
+		"Price": "52000",
+		"Level": "0",
+		"Speed": "55"
+	},
+	{
+		"Title": "Хакер",
+		"Price": "110000",
+		"Level": "0",
+		"Speed": "112"
+	},
+	{
+		"Title": "Ферма",
+		"Price": "230000",
+		"Level": "0",
+		"Speed": "250"
+	},
+	{
+		"Title": "Шахта",
+		"Price": "800000",
+		"Level": "0",
+		"Speed": "1000"
+	},
+	{
+		"Title": ""
+	}
+]

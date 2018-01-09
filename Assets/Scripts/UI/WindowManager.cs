@@ -11,8 +11,11 @@ public class WindowManager : MonoBehaviour {
 
     public GameObject[] Windows;
 
-    public Transform lastPos;
+    private Transform _lastPos;
 
-    public static OpenW
+    public static OpenWindow(WindowType type)
+    {
+        
+    }
 
 }

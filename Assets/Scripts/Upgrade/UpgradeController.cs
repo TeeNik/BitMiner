@@ -1,33 +1,38 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
-using System;
 using Newtonsoft.Json;
+using UnityEngine;
 
-public class UpgradeController : MonoBehaviour
+namespace Assets.Scripts.Upgrade
 {
-
-    public UpgradeElementView upgradeView;
-
-    public static event Action<double> InitAutoMine;
-
-    void Start()
+    public class UpgradeController : MonoBehaviour
     {
-        Init();
-    }
 
-    void Init()
-    {
-        double score = 1.5;
-        //instanciate of upgrade view with models
+        public UpgradeElementView upgradeView;
 
+        public Transform Data;
 
-        List<UpgradeElementModel> models = JsonConvert.DeserializeObject<List<UpgradeElementModel>>(ResourceManager.Instance.UpgradeData.text);
-        foreach (UpgradeElementModel model in models)
+        public static event Action<double> InitAutoMine;
+
+        void Start()
         {
-            print(model.Title);
+            Init();
         }
-        InitAutoMine(score);
 
+        void Init()
+        {
+            double score = 1.5;
+            //instanciate of upgrade view with models
+
+
+            List<UpgradeElementModel> models = JsonConvert.DeserializeObject<List<UpgradeElementModel>>(ResourceManager.Instance.UpgradeData.text);
+            foreach (UpgradeElementModel model in models)
+            {
+                var clone = Instantiate(upgradeView, Data);
+                clone.Init(model);
+            }
+            InitAutoMine(score);
+
+        }
     }
 }

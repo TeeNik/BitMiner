@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Timers;
+using Assets.Scripts.Upgrade;
 
 public class AutoMine : MonoBehaviour {
 

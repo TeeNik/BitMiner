@@ -7,8 +7,13 @@ public class MenuButton : MonoBehaviour
 {
 
     public Transform Window;
-    public void OnClick()
+    public void OnClickOpen()
     {
-        Window.DOLocalMoveX(0, 1);
+        WindowManager.Instance.OpenWindow(Window);
+    }
+
+    public void OnClickClose()
+    {
+        WindowManager.Instance.CloseWindow();
     }
 }

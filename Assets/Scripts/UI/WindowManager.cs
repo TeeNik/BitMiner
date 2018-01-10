@@ -8,16 +8,29 @@ public class WindowManager : MonoBehaviour {
     public static WindowManager Instance;
 
     private float _lastPos;
+    private Transform _openedWindow;
+
+    public GameObject Background;
+
+    void Start()
+    {
+        Instance = this;
+    }
 
     public void OpenWindow(Transform window)
     {
+        _openedWindow = window;
         _lastPos =  window.localPosition.x;
         window.DOLocalMoveX(0, 1);
+        print(213123);
+        Background.SetActive(true);
     }
 
-    public void CloseWindow(Transform window)
+    public void CloseWindow()
     {
-        window.DOLocalMoveX(_lastPos, 1);
+        _openedWindow.DOLocalMoveX(_lastPos, 1);
+        _openedWindow = null;
+        Background.SetActive(false);
     }
 
 }

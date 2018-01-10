@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinSpawner : MonoBehaviour {
 
     private List<FallingCoin> _coinPool = new List<FallingCoin>();
+    
     public FallingCoin Coin;
     public int Size = 200;
     private int count = 0;

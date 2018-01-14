@@ -22,7 +22,6 @@ public class WindowManager : MonoBehaviour {
         _openedWindow = window;
         _lastPos =  window.localPosition.x;
         window.DOLocalMoveX(0, 1);
-        print(213123);
         Background.SetActive(true);
     }
 

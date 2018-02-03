@@ -5,19 +5,15 @@ using UnityEngine;
 public class CoinSpawner : MonoBehaviour {
 
     private List<FallingCoin> _coinPool = new List<FallingCoin>();
-    private List<ComboSign> _comboSignPool = new List<ComboSign>();
-    
+   
     public FallingCoin Coin;
-    public ComboSign ComboSign;
     public int SizeOfCoins = 200;
-    private int count = 0;
-
+    private int _coinCount = 0;
+    
     void Start()
     {
         GenerateCoinPool();
-        GenerateComboSignPool();
-
-        MineClick.Mine += SpawnCoin;
+        MineClick.Mine += SpawnCoin;  
     }
 
     private void GenerateCoinPool()
@@ -33,20 +29,13 @@ public class CoinSpawner : MonoBehaviour {
         }
     }
 
-    private void GenerateComboSignPool()
-    {
-        var clone = Instantiate(ComboSign, gameObject.transform, false);
-        clone.transform.localPosition = new Vector3(Random.Range(-2f, 2f), 0, 0);
-        clone.gameObject.SetActive(false);
-        _comboSignPool.Add(clone);
-    }
-
-
     void SpawnCoin(double d = 0)
     {
-        count = (count < SizeOfCoins) ? ++count : 0;
-        _coinPool[count].StartMoving();
+        _coinCount = (_coinCount < SizeOfCoins) ? ++_coinCount : 0;
+        _coinPool[_coinCount].StartMoving();
     }
+
+    
 
 
 }

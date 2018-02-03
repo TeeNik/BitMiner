@@ -24,7 +24,7 @@ public class MineClick : MonoBehaviour {
 
     public void ButtonClick()
     {
-        transform.DOPunchScale(new Vector3(0.55f, 0.55f, 1), 0.5f);
+        //transform.DOPunchScale(new Vector3(0.55f, 0.55f, 1), 0.5f);
         Mine(1*_combo);
         _clicks++;
     }

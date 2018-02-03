@@ -25,7 +25,7 @@ public class CoinSpawner : MonoBehaviour {
         for (int i = 0; i < SizeOfCoins; i++)
         {
             var clone = Instantiate(Coin, gameObject.transform, false);
-            clone.transform.localPosition = new Vector3(Random.Range(-2f, 2f), 0, 0);
+            clone.transform.localPosition = new Vector3(Random.Range(-250f, 250f), 0, 0);
             float scale = Random.Range(0.1f, 0.20f);
             clone.transform.localScale = new Vector3(scale, scale, 1);
             clone.gameObject.SetActive(false);

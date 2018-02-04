@@ -40,7 +40,7 @@ namespace Assets.Scripts.Upgrade
             UpdateViews();
         }
 
-        private void UpdateViews()
+        public void UpdateViews()
         {
             bool unknown = false;
             double score = StaticManager.GetPlayer().GetScore();

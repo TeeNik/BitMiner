@@ -11,9 +11,11 @@ public class ComboSign : MonoBehaviour
 	public void Activate()
     {
         gameObject.SetActive(true);
-        transform.DOLocalMoveX(transform.localPosition.x+20, 1);
+        transform.DOLocalMoveY(transform.localPosition.y+100, 1);
         Text.DOFade(0, 1).OnComplete(() =>
         {
+            transform.DOLocalMoveY(transform.localPosition.y - 100, 0.1f);
+            Text.DOFade(1, 0.1f);
             gameObject.SetActive(false);
         });
     }

@@ -45,12 +45,26 @@ namespace Assets.Scripts.Upgrade
             foreach (UpgradeElementView view in _views)
             {
                 if (unknown)
-                    view.SetEnabled(score >= view.Model.Price);
-                else
                     view.SetUnknown();
+                else
+                    view.SetEnabled(score >= view.Model.Price);
+                
 
                 if (view.Model.Level == 0) unknown = true;
             }
+        }
+
+        public void BuyUpgrade(int id)
+        {
+            if (StaticManager.GetPlayer().SpendScore(_views[id].Model.Price))
+            {
+                var view = _views[id];
+                view.Model.Level++;
+                view.Model.Price *= 1.5;
+                view.Init(view.Model);
+                UpdateViews();
+            }
+                
         }
 
         private List<UpgradeElementModel> LoadGameData()

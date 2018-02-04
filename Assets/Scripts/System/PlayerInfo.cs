@@ -22,8 +22,14 @@ public class PlayerInfo : MonoBehaviour {
     public void Click(double value)
     {
         _score += value;
+        UpdateText();
+    }
+
+    private void UpdateText()
+    {
         ScoreText.text = Tools.DoubleToString(_score);
     }
+
     void OnApplicationQuit()
     {
         PlayerPrefs.SetFloat("score", (float)_score);
@@ -32,5 +38,17 @@ public class PlayerInfo : MonoBehaviour {
     public double GetScore()
     {
         return _score;
+    }
+
+    public bool SpendScore(double value)
+    {
+        if (value >= _score)
+        {
+            _score -= value;
+            UpdateText();
+            return true;
+        }
+
+        return false;
     }
 }

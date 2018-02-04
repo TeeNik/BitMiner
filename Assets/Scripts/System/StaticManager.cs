@@ -8,6 +8,11 @@ public class StaticManager : MonoBehaviour
 
     public PlayerInfo Player;
 
+    void Start()
+    {
+        Instance = this;
+    }
+
     public static PlayerInfo GetPlayer()
     {
         return Instance.Player;

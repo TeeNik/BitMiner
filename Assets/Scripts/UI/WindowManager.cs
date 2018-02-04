@@ -12,16 +12,18 @@ public class WindowManager : MonoBehaviour {
 
     public GameObject Background;
 
+    public UIWindow[] Windows;
+
     void Start()
     {
         Instance = this;
     }
 
-    public void OpenWindow(RectTransform window)
+    public void OpenWindow(UIWindow.WindowType window)
     {
         window.gameObject.SetActive(true);
         _openedWindow = window;
-        _lastPos =  window.localPosition.x;
+        _lastPos = window.localPosition.x;
         window.DOAnchorPosX(-300, 1);
         Background.SetActive(true);
     }

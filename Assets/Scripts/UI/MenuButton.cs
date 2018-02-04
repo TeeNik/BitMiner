@@ -6,7 +6,7 @@ using UnityEngine;
 public class MenuButton : MonoBehaviour
 {
 
-    public RectTransform Window;
+    public UIWindow.WindowType Window;
     public void OnClickOpen()
     {
         WindowManager.Instance.OpenWindow(Window);

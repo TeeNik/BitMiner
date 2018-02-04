@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Upgrade;
 using UnityEngine;
 
-public class ShopWindow : MonoBehaviour
+public class ShopWindow : UIWindow
 {
 
     public UpgradeController UpgradeController;

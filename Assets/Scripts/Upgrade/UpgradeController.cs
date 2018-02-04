@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Upgrade
 
         public static event Action<double> InitAutoMine;
 
+        private string gameDataProjectFilePath = "/StreamingAssets/data.json";
+
         void Start()
         {
             _views = new List<UpgradeElementView>();
@@ -24,7 +27,7 @@ namespace Assets.Scripts.Upgrade
         {
             double score = 0.00000002;
 
-            List<UpgradeElementModel> models = JsonConvert.DeserializeObject<List<UpgradeElementModel>>(ResourceManager.Instance.UpgradeData.text);
+            List<UpgradeElementModel> models = LoadGameData();
             foreach (UpgradeElementModel model in models)
             {
                 var clone = Instantiate(upgradeView, Data);
@@ -32,6 +35,49 @@ namespace Assets.Scripts.Upgrade
                 _views.Add(clone);
             }
             InitAutoMine(score);
+        }
+
+        void UpdateViews()
+        {
+            bool unknown = false;
+            double score = StaticManager.GetPlayer().GetScore();
+            foreach (UpgradeElementView view in _views)
+            {
+                if (unknown)
+                    view.SetEnabled(score >= view.Model.Price);
+                else
+                    view.SetUnknown();
+
+                if (view.Model.Level == 0) unknown = true;
+            }
+        }
+
+        private List<UpgradeElementModel> LoadGameData()
+        {
+            string filePath = Application.dataPath + gameDataProjectFilePath;
+            if (File.Exists(filePath))
+            {
+                return JsonConvert.DeserializeObject<List<UpgradeElementModel>>(File.ReadAllText(filePath));;
+            }
+
+            return JsonConvert.DeserializeObject<List<UpgradeElementModel>>(ResourceManager.Instance.UpgradeData.text);
+        }
+
+        void SaveGameData()
+        {
+            List<UpgradeElementModel> models = new List<UpgradeElementModel>();
+            foreach (var view in _views)
+            {
+                models.Add(view.Model);
+            }
+            string data = JsonConvert.SerializeObject(models);
+            string filePath = Application.dataPath + gameDataProjectFilePath;
+            File.WriteAllText(filePath, data);
+        }
+
+        void OnApplicationQuit()
+        {
+            SaveGameData();
         }
 
     }

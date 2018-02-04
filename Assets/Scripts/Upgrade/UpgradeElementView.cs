@@ -12,16 +12,16 @@ public class UpgradeElementView : MonoBehaviour {
     public Text Speed;
     public Button Button;
 
-    private UpgradeElementModel _model;
+    public UpgradeElementModel Model;
 
     public void Init(UpgradeElementModel model)
     {
-        _model = model;
+        Model = model;
 
-        Title.text = _model.Title;
-        Price.text = Tools.DoubleToString(_model.Price);
-        Level.text = "Уровень:  " + _model.Level;
-        Speed.text = "BPS:  " + Tools.DoubleToString(_model.Speed);
+        Title.text = Model.Title;
+        Price.text = Tools.DoubleToString(Model.Price);
+        Level.text = "Уровень:  " + Model.Level;
+        Speed.text = "BPS:  " + Tools.DoubleToString(Model.Speed);
     }
 
     public void SetEnabled(bool enable)
@@ -29,6 +29,15 @@ public class UpgradeElementView : MonoBehaviour {
         Button.interactable = enable;
         int gr = enable ? 0 : 1;
         Avatar.material.SetFloat("_GrayscaleAmount", gr);
+    }
+
+    public void SetUnknown()
+    {
+        Title.text = "????????";
+        Price.text = "????????";
+        Level.text = "Уровень:  " + 0;
+        Speed.text = "BPS:  " + "????";
+        Avatar.color = Color.black;
     }
 
     /*private void setButtonEnabled(Button button, int gr)

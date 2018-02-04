@@ -28,4 +28,9 @@ public class PlayerInfo : MonoBehaviour {
     {
         PlayerPrefs.SetFloat("score", (float)_score);
     }
+
+    public double GetScore()
+    {
+        return _score;
+    }
 }

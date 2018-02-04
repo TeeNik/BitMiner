@@ -7,7 +7,7 @@ public class SignSpawner : MonoBehaviour {
     private int _signCount = 0;
     private List<ComboSign> _comboSignPool = new List<ComboSign>();
     public ComboSign ComboSign;
-    public int SizeOfSigns = 15;
+    public int SizeOfSigns = 20;
     void Start () {
 	    GenerateComboSignPool();
         MineClick.Mine += SpawnSign;

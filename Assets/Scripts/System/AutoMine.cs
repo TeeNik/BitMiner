@@ -7,7 +7,7 @@ using Assets.Scripts.Upgrade;
 
 public class AutoMine : MonoBehaviour {
 
-    private double _score = 0.5;
+    private double _score = 0.00000002;
 
     private Timer _timer;
 

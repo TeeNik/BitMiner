@@ -21,7 +21,7 @@ namespace Assets.Scripts.Upgrade
 
         void Init()
         {
-            double score = 1.5;
+            double score = 0.00000002;
             //instanciate of upgrade view with models
 
 

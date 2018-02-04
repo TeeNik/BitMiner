@@ -18,9 +18,9 @@ public class UpgradeElementView : MonoBehaviour {
         _model = model;
 
         Title.text = _model.Title;
-        Price.text = _model.Price.ToString();
+        Price.text = Tools.DoubleToString(_model.Price);
         Level.text = "Уровень:  " + _model.Level;
-        Speed.text = "BPS:  " + _model.Speed;
+        Speed.text = "BPS:  " + Tools.DoubleToString(_model.Speed);
     }
 
 }

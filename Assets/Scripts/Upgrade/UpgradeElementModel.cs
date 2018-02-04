@@ -6,15 +6,15 @@ public class UpgradeElementModel {
 
     public string Title;
     public int Level;
-    public int Price;
-    public float Speed;
+    public double Price;
+    public double Speed;
 
     public UpgradeElementModel()
     {
 
     }
 
-    public UpgradeElementModel(string title, int level, int price, float speed)
+    public UpgradeElementModel(string title, int level, double price, double speed)
     {
         Title = title;
         Level = level;

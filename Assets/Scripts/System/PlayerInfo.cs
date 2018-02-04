@@ -22,7 +22,7 @@ public class PlayerInfo : MonoBehaviour {
     public void Click(double value)
     {
         _score += value;
-        ScoreText.text = String.Format("{0:F8}", _score);
+        ScoreText.text = Tools.DoubleToString(_score);
     }
     void OnApplicationQuit()
     {

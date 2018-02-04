@@ -11,6 +11,7 @@ public class ShopWindow : UIWindow
 
     public override void OnOpen()
     {
+        print("on open");
         UpgradeController.UpdateViews();
         base.OnOpen();
     }

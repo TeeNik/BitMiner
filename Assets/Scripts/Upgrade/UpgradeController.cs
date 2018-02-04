@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -21,10 +22,9 @@ namespace Assets.Scripts.Upgrade
         {
             UpgradeElementView.Buy += BuyUpgrade;
             _views = new List<UpgradeElementView>();
-            Init();
         }
 
-        private void Init()
+        public void Init()
         {
             double score = 0.00000002;
 
@@ -44,6 +44,7 @@ namespace Assets.Scripts.Upgrade
         {
             bool unknown = false;
             double score = StaticManager.GetPlayer().GetScore();
+            print(_views);
             foreach (UpgradeElementView view in _views)
             {
                 if (unknown)

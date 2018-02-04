@@ -23,7 +23,7 @@ public class WindowManager : MonoBehaviour {
 
     public void OpenWindow(UIWindow.WindowType type)
     {        
-        _openedWindow = GetWindow(type);    
+        _openedWindow = GetWindow(type);   
         _openedWindow.OnOpen();
         Background.SetActive(true);
     }

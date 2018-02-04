@@ -19,11 +19,12 @@ namespace Assets.Scripts.Upgrade
 
         void Start()
         {
+            UpgradeElementView.Buy += BuyUpgrade;
             _views = new List<UpgradeElementView>();
             Init();
         }
 
-        void Init()
+        private void Init()
         {
             double score = 0.00000002;
 
@@ -34,11 +35,12 @@ namespace Assets.Scripts.Upgrade
                 clone.Init(model);
                 _views.Add(clone);
             }
-            InitAutoMine(score);
+
+            if (InitAutoMine != null) InitAutoMine(score);
             UpdateViews();
         }
 
-        void UpdateViews()
+        private void UpdateViews()
         {
             bool unknown = false;
             double score = StaticManager.GetPlayer().GetScore();
@@ -63,8 +65,7 @@ namespace Assets.Scripts.Upgrade
                 view.Model.Price *= 1.5;
                 view.Init(view.Model);
                 UpdateViews();
-            }
-                
+            }                
         }
 
         private List<UpgradeElementModel> LoadGameData()

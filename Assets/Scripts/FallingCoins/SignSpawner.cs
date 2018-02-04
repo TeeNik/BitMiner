@@ -28,6 +28,5 @@ public class SignSpawner : MonoBehaviour {
     {
         _signCount = _signCount <= SizeOfSigns - 2 ? ++_signCount : 0;
         _comboSignPool[_signCount].Activate();
-        print(_signCount);
     }
 }

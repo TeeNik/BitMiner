@@ -14,6 +14,7 @@ public class PlayerInfo : MonoBehaviour {
     public void Start()
     {
         _score = PlayerPrefs.GetFloat("score");
+        UpdateText();
         MineClick.Mine += Click;
         AutoMine.Mine += Click;
         _combo = 0;
@@ -42,7 +43,7 @@ public class PlayerInfo : MonoBehaviour {
 
     public bool SpendScore(double value)
     {
-        if (value >= _score)
+        if (_score >= value)
         {
             _score -= value;
             UpdateText();

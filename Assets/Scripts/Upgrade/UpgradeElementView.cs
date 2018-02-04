@@ -16,9 +16,10 @@ namespace Assets.Scripts.Upgrade
         public UpgradeElementModel Model;
         public static event Action<int> Buy;
 
-        public void Init(UpgradeElementModel model)
+        public void Init(UpgradeElementModel model = null)
         {
-            Model = model;
+            if(model != null)
+                Model = model;
 
             Title.text = Model.Title;
             Price.text = Tools.DoubleToString(Model.Price);
@@ -28,6 +29,7 @@ namespace Assets.Scripts.Upgrade
 
         public void SetEnabled(bool enable)
         {
+            Init();
             Button.interactable = enable;
             int gr = enable ? 0 : 1;
             Avatar.material.SetFloat("_GrayscaleAmount", gr);
@@ -42,9 +44,9 @@ namespace Assets.Scripts.Upgrade
             Avatar.color = Color.black;
         }
 
-        void ButtonClick()
+        public void ButtonClick()
         {
-            Buy(Model.Id);
+            if (Buy != null) Buy(Model.Id);
         }
 
         /*private void setButtonEnabled(Button button, int gr)

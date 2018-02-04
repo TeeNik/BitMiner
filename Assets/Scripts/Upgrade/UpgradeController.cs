@@ -35,6 +35,7 @@ namespace Assets.Scripts.Upgrade
                 _views.Add(clone);
             }
             InitAutoMine(score);
+            UpdateViews();
         }
 
         void UpdateViews()
@@ -77,7 +78,7 @@ namespace Assets.Scripts.Upgrade
 
         void OnApplicationQuit()
         {
-            SaveGameData();
+            //SaveGameData();
         }
 
     }

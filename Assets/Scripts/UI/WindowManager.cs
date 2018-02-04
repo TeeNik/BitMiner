@@ -19,6 +19,7 @@ public class WindowManager : MonoBehaviour {
 
     public void OpenWindow(RectTransform window)
     {
+        window.gameObject.SetActive(true);
         _openedWindow = window;
         _lastPos =  window.localPosition.x;
         window.DOAnchorPosX(-300, 1);
@@ -27,7 +28,7 @@ public class WindowManager : MonoBehaviour {
 
     public void CloseWindow()
     {
-        _openedWindow.DOLocalMoveX(_lastPos, 1);
+        _openedWindow.DOLocalMoveX(_lastPos, 1).OnComplete(() => { _openedWindow.gameObject.SetActive(false); });
         _openedWindow = null;
         Background.SetActive(false);
     }

@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour {
 
     public void Start()
     {
-        _score = 0;
+        _score = PlayerPrefs.GetFloat("score");
         MineClick.Mine += Click;
         AutoMine.Mine += Click;
         _combo = 0;
@@ -23,5 +23,9 @@ public class PlayerInfo : MonoBehaviour {
     {
         _score += value;
         ScoreText.text = String.Format("{0:F8}", _score);
+    }
+    void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat("score", (float)_score);
     }
 }

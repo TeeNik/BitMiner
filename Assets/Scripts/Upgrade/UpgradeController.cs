@@ -7,8 +7,8 @@ namespace Assets.Scripts.Upgrade
 {
     public class UpgradeController : MonoBehaviour
     {
-
         public UpgradeElementView upgradeView;
+        private List<UpgradeElementView> _views;
 
         public Transform Data;
 
@@ -16,6 +16,7 @@ namespace Assets.Scripts.Upgrade
 
         void Start()
         {
+            _views = new List<UpgradeElementView>();
             Init();
         }
 
@@ -28,9 +29,10 @@ namespace Assets.Scripts.Upgrade
             {
                 var clone = Instantiate(upgradeView, Data);
                 clone.Init(model);
+                _views.Add(clone);
             }
             InitAutoMine(score);
-
         }
+
     }
 }

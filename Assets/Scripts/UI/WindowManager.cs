@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.UI;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,7 +10,7 @@ public class WindowManager : MonoBehaviour {
     public static WindowManager Instance;
 
     private float _lastPos;
-    private RectTransform _openedWindow;
+    private UIWindow _openedWindow;
 
     public GameObject Background;
 
@@ -19,20 +21,29 @@ public class WindowManager : MonoBehaviour {
         Instance = this;
     }
 
-    public void OpenWindow(UIWindow.WindowType window)
-    {
-        window.gameObject.SetActive(true);
-        _openedWindow = window;
-        _lastPos = window.localPosition.x;
-        window.DOAnchorPosX(-300, 1);
+    public void OpenWindow(UIWindow.WindowType type)
+    {        
+        _openedWindow = GetWindow(type);    
+        _openedWindow.OnOpen();
         Background.SetActive(true);
     }
 
     public void CloseWindow()
     {
-        _openedWindow.DOLocalMoveX(_lastPos, 1).OnComplete(() => { _openedWindow.gameObject.SetActive(false); });
-        _openedWindow = null;
+        _openedWindow.OnClose();
+        _openedWindow = null;        
         Background.SetActive(false);
+    }
+
+    public UIWindow GetWindow(UIWindow.WindowType type)
+    {
+        foreach (UIWindow window in Windows)
+        {
+            if (window.Type == type)
+                return window;
+        }
+
+        throw new Exception("There is no window of type = " + type);
     }
 
 }

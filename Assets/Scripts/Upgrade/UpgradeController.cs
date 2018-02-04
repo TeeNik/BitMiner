@@ -22,8 +22,6 @@ namespace Assets.Scripts.Upgrade
         void Init()
         {
             double score = 0.00000002;
-            //instanciate of upgrade view with models
-
 
             List<UpgradeElementModel> models = JsonConvert.DeserializeObject<List<UpgradeElementModel>>(ResourceManager.Instance.UpgradeData.text);
             foreach (UpgradeElementModel model in models)

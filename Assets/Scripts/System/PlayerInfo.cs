@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,6 @@ public class PlayerInfo : MonoBehaviour {
     public void Click(double value)
     {
         _score += value;
-        ScoreText.text = _score.ToString();
+        ScoreText.text = String.Format("{0:F8}", _score);
     }
 }
